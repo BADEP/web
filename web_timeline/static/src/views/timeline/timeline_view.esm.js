@@ -15,33 +15,33 @@ import {registry} from "@web/core/registry";
 const viewRegistry = registry.category("views");
 
 export const TimelineView = {
-    display_name: _t("Timeline"),
-    icon: "fa fa-tasks",
-    multiRecord: true,
-    ArchParser: TimelineArchParser,
-    Controller: TimelineController,
-    Renderer: TimelineRenderer,
-    Model: TimelineModel,
-    jsLibs: ["/web_timeline/static/lib/vis-timeline/vis-timeline-graph2d.js"],
-    cssLibs: ["/web_timeline/static/lib/vis-timeline/vis-timeline-graph2d.css"],
-    type: "timeline",
+  display_name: _t("Timeline"),
+  icon: "fa fa-tasks",
+  multiRecord: true,
+  ArchParser: TimelineArchParser,
+  Controller: TimelineController,
+  Renderer: TimelineRenderer,
+  Model: TimelineModel,
+  jsLibs: ["/web_timeline/static/lib/vis-timeline/vis-timeline-graph2d.js"],
+  cssLibs: ["/web_timeline/static/lib/vis-timeline/vis-timeline-graph2d.css"],
+  type: "timeline",
 
-    props: (genericProps, view) => {
-        const {arch, fields, resModel} = genericProps;
-        const parser = new view.ArchParser();
-        const archInfo = parser.parse(arch, fields);
-        const modelParams = {
-            ...archInfo,
-            resModel: resModel,
-            fields: fields,
-        };
+  props: (genericProps, view) => {
+    const {arch, fields, resModel} = genericProps;
+    const parser = new view.ArchParser();
+    const archInfo = parser.parse(arch, fields);
+    const modelParams = {
+      ...archInfo,
+      resModel: resModel,
+      fields: fields,
+    };
 
-        return {
-            ...genericProps,
-            modelParams,
-            Model: view.Model,
-            Renderer: view.Renderer,
-        };
-    },
+    return {
+      ...genericProps,
+      modelParams,
+      Model: view.Model,
+      Renderer: view.Renderer,
+    };
+  },
 };
 viewRegistry.add("timeline", TimelineView);
