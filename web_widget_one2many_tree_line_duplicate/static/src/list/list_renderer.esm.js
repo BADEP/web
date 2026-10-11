@@ -6,6 +6,7 @@ import {patch} from "@web/core/utils/patch";
 import {exprToBoolean} from "@web/core/utils/strings";
 import {browser} from "@web/core/browser/browser";
 import {x2ManyCommands} from "@web/core/orm_plugin";
+import {signal} from "@odoo/owl";
 
 const SCALAR_TYPES = [
   "integer",
@@ -33,13 +34,12 @@ patch(ListRenderer.prototype, {
       parent.props.fieldInfo.options &&
       parent.props.fieldInfo.options.allow_clone
     );
-    this.duplicateLineColumn = exprToBoolean(
-      browser.localStorage.getItem(this.keyDuplicateLineColumn),
-      true
+    this.duplicateLineColumn = signal(
+      exprToBoolean(browser.localStorage.getItem(this.keyDuplicateLineColumn), true)
     );
   },
   get hasDuplicateLineColumn() {
-    return this.duplicateLineAllowed && this.duplicateLineColumn;
+    return this.duplicateLineAllowed && this.duplicateLineColumn();
   },
   isDuplicableLine(record) {
     return !["line_section", "line_subsection", "line_note"].includes(
@@ -47,9 +47,11 @@ patch(ListRenderer.prototype, {
     );
   },
   toggleDuplicateLineColumn() {
-    this.duplicateLineColumn = !this.duplicateLineColumn;
-    browser.localStorage.setItem(this.keyDuplicateLineColumn, this.duplicateLineColumn);
-    this.render();
+    this.duplicateLineColumn.set(!this.duplicateLineColumn());
+    browser.localStorage.setItem(
+      this.keyDuplicateLineColumn,
+      this.duplicateLineColumn()
+    );
   },
   get nbCols() {
     let nbCols = super.nbCols;
@@ -201,12 +203,13 @@ patch(ListRenderer.prototype, {
     // rendered: the line appears directly with the original values, without
     // the flicker of a second render.
     await list.model.mutex.exec(async () => {
-      const sourceIndex = list.records.indexOf(record);
+      const previousIds = new Set(list.records.map((rec) => rec.id));
       await list._duplicateRecords([record], {});
-      // The duplicate is inserted right after the source line; identify it
-      // by position (references aren't stable across the re-wrapping).
-      const newRecord = list.records[sourceIndex + 1];
-      if (newRecord && newRecord.id !== record.id) {
+      // Identify the duplicate by its datapoint id (references aren't stable
+      // across the re-wrapping): without a handle field the core appends it
+      // at the end of the list instead of right after the source line.
+      const newRecord = list.records.find((rec) => !previousIds.has(rec.id));
+      if (newRecord) {
         if (Object.keys(snapshot).length) {
           await newRecord._update(snapshot, {
             withoutOnchange: true,
