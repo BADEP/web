@@ -3,9 +3,9 @@
  * Copyright 2023 Taras Shabaranskyi
  * License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). */
 
-import {Component} from "@odoo/owl";
+import {Component, usePlugin} from "@odoo/owl";
 import {useDebounced} from "@web/core/utils/timing";
-import {useService} from "@web/core/utils/hooks";
+import {ActionManagerPlugin} from "@web/webclient/actions/action_plugin";
 
 export function useRefreshAnimation(timeout) {
   const refreshClass = "o_content__refresh";
@@ -41,7 +41,7 @@ export function useRefreshAnimation(timeout) {
 export class Refresher extends Component {
   setup() {
     super.setup();
-    this.action = useService("action");
+    this.action = usePlugin(ActionManagerPlugin);
     this.refreshAnimation = useRefreshAnimation(1000);
     this.onClickRefresh = useDebounced(this.onClickRefresh, 200);
   }
