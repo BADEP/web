@@ -3,7 +3,7 @@
 {
     "name": "Web Search Deactivate Autosearch",
     "summary": "Allow user to deactivate autosearch to add multiple filters",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "development_status": "Beta",
     "category": "Web",
     "website": "https://github.com/OCA/web",
