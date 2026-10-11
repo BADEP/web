@@ -36,6 +36,8 @@ patch(ListController.prototype, {
     const default_max_opened = this.model.constructor.MAX_NUMBER_OPENED_GROUPS;
     // Set in MAX_NUMBER_OPENED_GROUPS the maximum number of groups that can be opened
     this.model.constructor.MAX_NUMBER_OPENED_GROUPS = max_length;
+    // Odoo 20 only sends the groups opening info when requested
+    this.model.root.config.sendOpeningInfo = true;
     await this.model.root.load();
     // Restore the default value of MAX_NUMBER_OPENED_GROUPS
     this.model.constructor.MAX_NUMBER_OPENED_GROUPS = default_max_opened;
@@ -69,6 +71,8 @@ patch(ListController.prototype, {
     const default_max_opened = this.model.constructor.MAX_NUMBER_OPENED_GROUPS;
     // Set in MAX_NUMBER_OPENED_GROUPS the maximum number of groups that can be opened
     this.model.constructor.MAX_NUMBER_OPENED_GROUPS = max_length;
+    // Odoo 20 only sends the groups opening info when requested
+    this.model.root.config.sendOpeningInfo = true;
     await this.model.root.load();
     // Restore the default value of MAX_NUMBER_OPENED_GROUPS
     this.model.constructor.MAX_NUMBER_OPENED_GROUPS = default_max_opened;
