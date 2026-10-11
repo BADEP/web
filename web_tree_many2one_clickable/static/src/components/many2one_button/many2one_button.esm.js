@@ -12,21 +12,21 @@ import {patch} from "@web/core/utils/patch";
 import {useService} from "@web/core/utils/hooks";
 
 patch(ListRenderer.prototype, {
-    setup() {
-        this.actionService = useService("action");
-        super.setup(...arguments);
-    },
-    async onClickM2oButton(record, column, ev) {
-        ev.stopPropagation();
-        const field = record.fields[column.name];
-        const value = record.data[column.name];
-        return this.actionService.doAction({
-            type: "ir.actions.act_window",
-            res_model: field.relation,
-            res_id: value && value.id,
-            views: [[false, "form"]],
-            target: "current",
-            additionalContext: column.context || {},
-        });
-    },
+  setup() {
+    this.actionService = useService("action");
+    super.setup(...arguments);
+  },
+  async onClickM2oButton(record, column, ev) {
+    ev.stopPropagation();
+    const field = record.fields[column.name];
+    const value = record.data[column.name];
+    return this.actionService.doAction({
+      type: "ir.actions.act_window",
+      res_model: field.relation,
+      res_id: value && value.id,
+      views: [[false, "form"]],
+      target: "current",
+      additionalContext: column.context || {},
+    });
+  },
 });
