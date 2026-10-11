@@ -2,18 +2,36 @@
 License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html). */
 
 import {UrlField, formUrlField, urlField} from "@web/views/fields/url/url_field";
-import {copyClipboardURLField} from "@web/views/fields/copy_clipboard/copy_clipboard_field";
+import {
+  copyClipboardFieldProps,
+  copyClipboardURLField,
+} from "@web/views/fields/copy_clipboard/copy_clipboard_field";
 import {patch} from "@web/core/utils/patch";
+import {standardFieldProps} from "@web/views/fields/standard_field_props";
+import {t, useProps} from "@odoo/owl";
 
 const AdvancedUrlFieldProps = {
-  text_field: {type: String, optional: true},
-  prefix_name: {type: String, optional: true},
+  text_field: t.string().optional(),
+  prefix_name: t.string().optional(),
 };
 
-patch(UrlField.props, AdvancedUrlFieldProps);
-patch(copyClipboardURLField.component.props, AdvancedUrlFieldProps);
+// CopyClipboardURLField forwards its own props to the UrlField
+Object.assign(copyClipboardFieldProps, AdvancedUrlFieldProps);
 
 patch(UrlField.prototype, {
+  setup() {
+    // The UrlField props schema is not exported in Odoo 20: declare it again
+    // with the extra props so they are exposed on this.props.
+    this.props = useProps({
+      ...standardFieldProps,
+      placeholder: t.string().optional(),
+      text: t.string().optional(),
+      websitePath: t.boolean().optional(),
+      ...AdvancedUrlFieldProps,
+    });
+    super.setup(...arguments);
+  },
+
   _get_text_field() {
     if (this.props.text_field) {
       let field_value = this.props.record.data[this.props.text_field];

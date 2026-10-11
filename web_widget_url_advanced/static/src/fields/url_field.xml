@@ -7,8 +7,8 @@
         t-inherit-mode="extension"
     >
         <xpath expr="//a[hasclass('o_field_widget')]" position="attributes">
-            <attribute name="t-out">title</attribute>
-            <attribute name="t-att-href">formattedHrefWithPrefix</attribute>
+            <attribute name="t-out">this.title</attribute>
+            <attribute name="t-att-href">this.formattedHrefWithPrefix</attribute>
         </xpath>
     </t>
 
@@ -18,8 +18,8 @@
         t-inherit-mode="extension"
     >
         <xpath expr="//a[hasclass('o_field_widget')]" position="attributes">
-            <attribute name="t-out">title</attribute>
-            <attribute name="t-att-href">formattedHrefWithPrefix</attribute>
+            <attribute name="t-out">this.title</attribute>
+            <attribute name="t-att-href">this.formattedHrefWithPrefix</attribute>
         </xpath>
     </t>
 
