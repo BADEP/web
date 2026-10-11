@@ -8,7 +8,7 @@
             <attribute name="class" add="text-muted" separator=" " />
         </xpath>
         <xpath
-            expr="//textarea[@t-else='' and @t-ref='labelNodeRef']"
+            expr="//textarea[@t-else='' and @t-custom-ref='labelNodeRef']"
             position="attributes"
         >
             <attribute name="class" add="text-muted" separator=" " />
