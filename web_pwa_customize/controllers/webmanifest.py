@@ -4,7 +4,6 @@ import json
 
 from odoo import http
 from odoo.http import request
-from odoo.tools import ustr
 
 from odoo.addons.web.controllers import webmanifest
 
@@ -54,11 +53,11 @@ class WebManifest(webmanifest.WebManifest):
         res = super().webmanifest()
         manifest = json.loads(res.response[0])
         icp = request.env["ir.config_parameter"].sudo()
-        manifest["short_name"] = icp.get_param("pwa.manifest.short_name", "Odoo")
-        manifest["background_color"] = icp.get_param(
+        manifest["short_name"] = icp.get_str("pwa.manifest.short_name", "Odoo")
+        manifest["background_color"] = icp.get_str(
             "pwa.manifest.background_color", "#714B67"
         )
-        manifest["theme_color"] = icp.get_param("pwa.manifest.theme_color", "#714B67")
+        manifest["theme_color"] = icp.get_str("pwa.manifest.theme_color", "#714B67")
         pwa_icon = (
             request.env["ir.attachment"]
             .sudo()
@@ -66,7 +65,7 @@ class WebManifest(webmanifest.WebManifest):
         )
         if pwa_icon:
             manifest["icons"] = self._get_pwa_manifest_icons(pwa_icon)
-        body = json.dumps(manifest, default=ustr)
+        body = json.dumps(manifest, default=str)
         return request.make_response(
             body,
             [
