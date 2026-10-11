@@ -5,10 +5,9 @@
  * Copyright 2023 Taras Shabaranskyi
  * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
 
-import {onMounted, onWillStart} from "@odoo/owl";
+import {onMounted, onWillStart, signal, useListener} from "@odoo/owl";
 import {FileViewer} from "@web/core/file_viewer/file_viewer";
 import {patch} from "@web/core/utils/patch";
-import {useExternalListener, useRef} from "@web/owl2/utils";
 
 const formChatterClassName = ".o-mail-Form-chatter";
 const formViewSheetClassName = ".o_form_view_container .o_form_sheet_bg";
@@ -19,9 +18,9 @@ export function useFileViewerContainerSize(ref) {
     const chatterElement = document.querySelector(formChatterClassName);
     /** @type {HTMLDivElement}*/
     const formSheetElement = document.querySelector(formViewSheetClassName);
-    if (chatterElement && formSheetElement && ref.el) {
+    if (chatterElement && formSheetElement && ref()) {
       /** @type {CSSStyleDeclaration}*/
-      const elStyle = ref.el.style;
+      const elStyle = ref().style;
       const width = `${chatterElement.clientWidth}px`;
       const height = `${chatterElement.clientHeight}px`;
       const left = `${formSheetElement.clientWidth}px`;
@@ -31,7 +30,7 @@ export function useFileViewerContainerSize(ref) {
     }
   }
 
-  useExternalListener(window, "resize", () => {
+  useListener(window, "resize", () => {
     requestAnimationFrame(updateActualFormChatterSize);
   });
   onMounted(() => {
@@ -42,7 +41,7 @@ export function useFileViewerContainerSize(ref) {
 export const unpatchFileViewer = patch(FileViewer.prototype, {
   setup() {
     super.setup();
-    this.root = useRef("root");
+    this.root = signal.ref();
     Object.assign(this.state, {
       allowMinimize: false,
       maximized: true,

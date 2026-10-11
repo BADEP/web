@@ -6,7 +6,7 @@
  * Copyright 2023 Taras Shabaranskyi
  * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
 
-import {Component, onWillStart, proxy} from "@odoo/owl";
+import {Component, onWillStart, proxy, t, useProps} from "@odoo/owl";
 import {useBus, useService} from "@web/core/utils/hooks";
 import {AppMenuItem} from "@web_responsive/components/apps_menu_item/apps_menu_item.esm";
 import {AppsMenuSearchBar} from "@web_responsive/components/menu_searchbar/searchbar.esm";
@@ -28,6 +28,7 @@ patch(WebClient.prototype, {
       document.body.classList.toggle("o_apps_menu_opened", state);
     });
     this.user = user;
+    this.orm = useService("orm");
     onWillStart(async () => {
       const is_redirect_home = await this.orm.searchRead(
         "res.users",
@@ -50,6 +51,11 @@ patch(WebClient.prototype, {
 });
 
 export class AppsMenu extends Component {
+  static template = "web_responsive.AppsMenu";
+  props = useProps({
+    slots: t.object().optional(),
+  });
+
   setup() {
     super.setup();
     this.state = proxy({open: false});
@@ -171,16 +177,6 @@ patch(NavBar.prototype, {
   openAppMenu() {
     this.env.bus.trigger("APP_MENU:OPEN_APP_MENU");
     this._closeAppMenuSidebar();
-  },
-});
-
-Object.assign(AppsMenu, {
-  template: "web_responsive.AppsMenu",
-  props: {
-    slots: {
-      type: Object,
-      optional: true,
-    },
   },
 });
 

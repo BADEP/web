@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2018 Tecnativa - Jairo Llopis
+     Copyright 2021 ITerra - Sergey Shebanin
+     Copyright 2023 Onestein - Anjeel Haria
+     Copyright 2023 Taras Shabaranskyi
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
 <templates>
     <!-- Search bar -->
     <t t-name="web_responsive.AppsMenuCanonicalSearchBar">
@@ -7,7 +12,7 @@
                 <i class="fa fa-search search-icon fs-4 my-auto d-none d-sm-flex" />
                 <input
                     type="search"
-                    t-custom-ref="SearchBarInput"
+                    t-ref="this.searchBarInputRef"
                     t-on-input="this._searchMenus"
                     t-on-keydown="this._onKeyDown"
                     autocomplete="off"
@@ -18,7 +23,7 @@
             <ul
                 t-if="this.hasItemsToDisplay"
                 class="list-unstyled search-list"
-                t-custom-ref="searchItems"
+                t-ref="this.searchItemsRef"
             >
                 <t t-foreach="this.state.rootItems" t-as="menu" t-key="menu.id">
                     <li t-attf-class="search-item {{this.highlighted(menu_index)}}">

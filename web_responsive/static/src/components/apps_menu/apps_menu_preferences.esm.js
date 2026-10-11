@@ -1,15 +1,14 @@
 /* Copyright 2023 Taras Shabaranskyi
  * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
 
-import {Component, usePlugin, xml} from "@odoo/owl";
+import {Component, xml} from "@odoo/owl";
 import {registry} from "@web/core/registry";
+import {useService} from "@web/core/utils/hooks";
 import {user} from "@web/core/user";
-import {ActionManagerPlugin} from "@web/webclient/actions/action_plugin";
 
 class AppsMenuPreferences extends Component {
-  static props = {};
   setup() {
-    this.action = usePlugin(ActionManagerPlugin);
+    this.action = useService("action");
     this.user = user;
   }
 

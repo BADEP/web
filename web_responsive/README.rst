@@ -20,14 +20,14 @@ Web Responsive
 .. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb__web_responsive-lightgray.png?logo=github
-    :target: https://github.com/OCA/web__web_responsive/tree/20.0/web_responsive
-    :alt: OCA/web__web_responsive
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github
+    :target: https://github.com/OCA/web/tree/20.0/web_responsive
+    :alt: OCA/web
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/web__web_responsive-20-0/web__web_responsive-20-0-web_responsive
+    :target: https://translation.odoo-community.org/projects/web-20-0/web-20-0-web_responsive
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/web__web_responsive&target_branch=20.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/web&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -40,32 +40,32 @@ This module adds responsiveness to web backend.
    redirected to the home page after login if they have enabled the
    'Redirect to Home' option in their profile settings.
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/redirecthome.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/redirecthome.gif
       :alt: image
 
 -  New navigation with the fullscreen app menu
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/appmenu.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/appmenu.gif
       :alt: image
 
 -  Quick menu search inside the app menu
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/appsearch.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/appsearch.gif
       :alt: image
 
 -  Sticky header & footer in list view
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/listview.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/listview.gif
       :alt: image
 
 -  Sticky statusbar in form view
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/formview.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/formview.gif
       :alt: image
 
 -  Bigger checkboxes in list view
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/listview.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/listview.gif
       :alt: image
 
 **Features for mobile**: \* View type picker dropdown displays
@@ -73,12 +73,12 @@ comfortably
 
 -  Control panel buttons use icons to save space.
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/form_buttons.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/form_buttons.gif
       :alt: image
 
 -  Followers and send button is displayed on mobile. Avatar is hidden.
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/chatter.png
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/chatter.png
       :alt: image
 
 -  Big inputs on form in edit mode
@@ -91,26 +91,26 @@ comfortably
    be more intuitive or accessible by fingers of one hand. F.x. Alt + S
    for Save
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/shortcuts.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/shortcuts.gif
       :alt: image
 
 -  Autofocus on search menu box when opening the app menu
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/appsearch.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/appsearch.gif
       :alt: image
 
 -  When the chatter is on the side part, the document viewer fills that
    part for side-by-side reading instead of full screen. You can still
    put it on full width preview clicking on the new maximize button.
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/document_viewer.gif
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/document_viewer.gif
       :alt: image
 
 -  When the user chooses to send a public message the color of the
    composer is different from the one when the message is an internal
    log.
 
-   .. image:: https://raw.githubusercontent.com/OCA/web__web_responsive/20.0/web_responsive/static/img/chatter-colors.png
+   .. image:: https://raw.githubusercontent.com/OCA/web/20.0/web_responsive/static/img/chatter-colors.png
       :alt: image
 
 **Table of contents**
@@ -136,10 +136,10 @@ Known issues / Roadmap
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/web__web_responsive/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/web/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/web__web_responsive/issues/new?body=module:%20web_responsive%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/web/issues/new?body=module:%20web_responsive%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -216,6 +216,6 @@ Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-Tardo| |maintainer-SplashS| 
 
-This module is part of the `OCA/web__web_responsive <https://github.com/OCA/web__web_responsive/tree/20.0/web_responsive>`_ project on GitHub.
+This module is part of the `OCA/web <https://github.com/OCA/web/tree/20.0/web_responsive>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
