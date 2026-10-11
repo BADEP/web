@@ -12,7 +12,7 @@ export class AppMenuItem extends Component {
   props = useProps({
     app: t.object(),
     href: t.string(),
-    currentApp: t.object().optional(),
+    currentApp: t.or([t.object(), t.literal(null)]).optional(),
     onClick: t.function(),
   });
 
