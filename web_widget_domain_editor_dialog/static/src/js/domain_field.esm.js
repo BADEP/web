@@ -7,30 +7,30 @@ import {_t} from "@web/core/l10n/translation";
 import {patch} from "@web/core/utils/patch";
 
 patch(DomainField.prototype, {
-    onButtonClick(ev) {
-        const self = this;
-        ev.preventDefault();
-        if (this.props.readonly) {
-            return this._super.apply(this, arguments);
-        }
-        if (!this.props.value) {
-            this.props.value = "[]";
-        }
-        this.addDialog(DomainEditorDialog, {
-            title: _t("Select records..."),
-            noCreate: true,
-            multiSelect: true,
-            resModel: this.getResModel(),
-            dynamicFilters: [
-                {
-                    description: _t("Selected domain"),
-                    domain: this.getEvaluatedDomain(),
-                },
-            ],
-            context: this.getContext(),
-            onSelected: function (resIds) {
-                self.update(this.get_domain(resIds));
-            },
-        });
-    },
+  onButtonClick(ev) {
+    const self = this;
+    ev.preventDefault();
+    if (this.props.readonly) {
+      return this._super.apply(this, arguments);
+    }
+    if (!this.props.value) {
+      this.props.value = "[]";
+    }
+    this.addDialog(DomainEditorDialog, {
+      title: _t("Select records..."),
+      noCreate: true,
+      multiSelect: true,
+      resModel: this.getResModel(),
+      dynamicFilters: [
+        {
+          description: _t("Selected domain"),
+          domain: this.getEvaluatedDomain(),
+        },
+      ],
+      context: this.getContext(),
+      onSelected: function (resIds) {
+        self.update(this.get_domain(resIds));
+      },
+    });
+  },
 });
