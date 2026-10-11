@@ -2,7 +2,7 @@
 import {_t} from "@web/core/l10n/translation";
 import {registry} from "@web/core/registry";
 import {standardFieldProps} from "@web/views/fields/standard_field_props";
-import {Component, onWillStart, onWillUpdateProps} from "@odoo/owl";
+import {Component, onWillStart, onWillUpdateProps, t, useProps} from "@odoo/owl";
 import {useOwnedDialogs} from "@web/core/utils/hooks";
 import {SelectMenu} from "@web/core/select_menu/select_menu";
 import {hasTouch} from "@web/core/browser/feature_detection";
@@ -10,12 +10,12 @@ import {hasTouch} from "@web/core/browser/feature_detection";
 export class FieldDynamicDropdown extends Component {
   static components = {SelectMenu};
   static template = "web.SelectionField";
-  static props = {
+  props = useProps({
     ...standardFieldProps,
-    method: {type: String},
-    context: {type: Object},
-    placeholder: {type: String, optional: true},
-  };
+    method: t.string(),
+    context: t.object(),
+    placeholder: t.string().optional(),
+  });
   setup() {
     super.setup();
     this.dialogs = useOwnedDialogs();
@@ -59,7 +59,7 @@ export class FieldDynamicDropdown extends Component {
     return this.options.map(([value, label]) => ({value: String(value), label}));
   }
   get isBottomSheet() {
-    return this.env.isSmall && hasTouch();
+    return hasTouch();
   }
   get string() {
     const current = this.props.record.data[this.props.name];
