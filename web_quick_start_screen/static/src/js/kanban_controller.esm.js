@@ -5,11 +5,11 @@ import {kanbanView} from "@web/views/kanban/kanban_view";
 import {registry} from "@web/core/registry";
 
 export class QuickStartScreenControlPanel extends ControlPanel {
-    static template = "start_screen.ControlPanel";
+  static template = "start_screen.ControlPanel";
 }
 
 export const quickStartScreenView = {
-    ...kanbanView,
-    ControlPanel: QuickStartScreenControlPanel,
+  ...kanbanView,
+  ControlPanel: QuickStartScreenControlPanel,
 };
 registry.category("views").add("quick_start_screen", quickStartScreenView);
