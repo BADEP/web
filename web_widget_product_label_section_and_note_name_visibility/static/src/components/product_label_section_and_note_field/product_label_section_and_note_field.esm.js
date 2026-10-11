@@ -5,12 +5,12 @@
 import {ProductLabelSectionAndNoteField} from "@account/components/product_label_section_and_note_field/product_label_section_and_note_field";
 import {patch} from "@web/core/utils/patch";
 import {useRecordObserver} from "@web/model/relational_model/utils";
-import {useState} from "@odoo/owl";
+import {proxy} from "@odoo/owl";
 
 patch(ProductLabelSectionAndNoteField.prototype, {
   setup() {
     super.setup(...arguments);
-    this.isProductVisible = useState({value: false});
+    this.isProductVisible = proxy({value: false});
     this.changeProductVisibility = true;
     useRecordObserver(async (record) => {
       if (this.changeProductVisibility) {

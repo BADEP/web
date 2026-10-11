@@ -20,14 +20,14 @@ Web widget product label section and note
 .. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github
-    :target: https://github.com/OCA/web/tree/19.0/web_widget_product_label_section_and_note_name_visibility
-    :alt: OCA/web
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb__web_widget_product_label_section_and_note_name_visibility-lightgray.png?logo=github
+    :target: https://github.com/OCA/web__web_widget_product_label_section_and_note_name_visibility/tree/20.0/web_widget_product_label_section_and_note_name_visibility
+    :alt: OCA/web__web_widget_product_label_section_and_note_name_visibility
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/web-19-0/web-19-0-web_widget_product_label_section_and_note_name_visibility
+    :target: https://translation.odoo-community.org/projects/web__web_widget_product_label_section_and_note_name_visibility-20-0/web__web_widget_product_label_section_and_note_name_visibility-20-0-web_widget_product_label_section_and_note_name_visibility
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/web&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/web__web_widget_product_label_section_and_note_name_visibility&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -43,22 +43,22 @@ to decide whether to show or hide the product name in the description.
 Usage
 =====
 
-- Go to the **Invoicing > Customers > Invoices** and add a new line.
-- The product label must be displayed just after the product name.
-- An eye-style icon is displayed; click it to toggle the product name.
+-  Go to the **Invoicing > Customers > Invoices** and add a new line.
+-  The product label must be displayed just after the product name.
+-  An eye-style icon is displayed; click it to toggle the product name.
 
 Known issues / Roadmap
 ======================
 
-- Add compatibility with purchase_product_matrix module
+-  Add compatibility with purchase_product_matrix module
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/web/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/web__web_widget_product_label_section_and_note_name_visibility/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/web/issues/new?body=module:%20web_widget_product_label_section_and_note_name_visibility%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/web__web_widget_product_label_section_and_note_name_visibility/issues/new?body=module:%20web_widget_product_label_section_and_note_name_visibility%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -74,10 +74,10 @@ Authors
 Contributors
 ------------
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-     - Pedro M. Baeza
-     - Carlos Lopez
+      -  Pedro M. Baeza
+      -  Carlos Lopez
 
 Maintainers
 -----------
@@ -100,6 +100,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-carlos-lopez-tecnativa| 
 
-This module is part of the `OCA/web <https://github.com/OCA/web/tree/19.0/web_widget_product_label_section_and_note_name_visibility>`_ project on GitHub.
+This module is part of the `OCA/web__web_widget_product_label_section_and_note_name_visibility <https://github.com/OCA/web__web_widget_product_label_section_and_note_name_visibility/tree/20.0/web_widget_product_label_section_and_note_name_visibility>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
