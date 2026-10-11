@@ -1,8 +1,9 @@
 import {evaluateBooleanExpr, evaluateExpr} from "@web/core/py_js/py";
-import {Component, onWillRender} from "@odoo/owl";
+import {Component} from "@odoo/owl";
 import {Domain} from "@web/core/domain";
 import {Record} from "@web/model/relational_model/record";
 import {getFieldContext} from "@web/model/relational_model/utils";
+import {onWillRender} from "@web/owl2/utils";
 
 export class X2Many2DMatrixRenderer extends Component {
   setup() {

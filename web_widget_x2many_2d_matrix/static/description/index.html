@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils: https://docutils.sourceforge.io/" />
-<title>README.rst</title>
+<meta name="generator" content="Docutilsb1.dev: https://docutils.sourceforge.io/" />
+<title>2D matrix for x2many fields</title>
 <style type="text/css">
 
 /*
 :Author: David Goodger (goodger@python.org)
-:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
+:Id: $Id$
 :Copyright: This stylesheet has been placed in the public domain.
 
 Default cascading style sheet for the HTML output of Docutils.
@@ -374,7 +374,7 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:ee9770e3b66b5fad88f24d1ce0ef2ee7f3827fb3aaa72f1d3a3d024c36acdaff
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Production/Stable" src="https://img.shields.io/badge/maturity-Production%2FStable-green.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/license-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/web/tree/19.0/web_widget_x2many_2d_matrix"><img alt="OCA/web" src="https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/web-19-0/web-19-0-web_widget_x2many_2d_matrix"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/web&amp;target_branch=19.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Production/Stable" src="https://img.shields.io/badge/maturity-Production%2FStable-green.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/license-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/web/tree/20.0/web_widget_x2many_2d_matrix"><img alt="OCA/web" src="https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/web-20-0/web-20-0-web_widget_x2many_2d_matrix"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/web&amp;target_branch=20.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
 <p>This module allows to show an x2many field with 3-tuples ($x_value,
 $y_value, $value) in a table</p>
 <table border="1" class="docutils">
@@ -404,7 +404,7 @@ $y_value, $value) in a table</p>
 <p>An example use case would be: Select some projects and some employees so
 that a manager can easily fill in the planned_hours for one task per
 employee. The result could look like this:</p>
-<p><img alt="Screenshot" src="https://raw.githubusercontent.com/OCA/web/12.0/web_widget_x2many_2d_matrix/static/description/screenshot.png" /></p>
+<img alt="Screenshot" src="https://raw.githubusercontent.com/OCA/web/12.0/web_widget_x2many_2d_matrix/static/description/screenshot.png" />
 <p>The beauty of this is that you have an arbitrary amount of columns with
 this widget, trying to get this in standard x2many lists involves some
 quite ugly hacks.</p>
@@ -483,34 +483,39 @@ crucial part is that we fill the field in the default function:</p>
 <pre class="code python literal-block">
 <span class="kn">from</span><span class="w"> </span><span class="nn">odoo</span><span class="w"> </span><span class="kn">import</span> <span class="n">fields</span><span class="p">,</span> <span class="n">models</span><span class="w">
 
+
 </span><span class="k">class</span><span class="w"> </span><span class="nc">MyWizard</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">TransientModel</span><span class="p">):</span><span class="w">
-</span>    <span class="n">_name</span> <span class="o">=</span> <span class="s1">'my.wizard'</span><span class="w">
+</span>    <span class="n">_name</span> <span class="o">=</span> <span class="s2">&quot;my.wizard&quot;</span><span class="w">
 
 </span>    <span class="k">def</span><span class="w"> </span><span class="nf">_default_task_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span><span class="w">
 </span>        <span class="c1"># your list of project should come from the context, some selection</span><span class="w">
 </span>        <span class="c1"># in a previous wizard or wherever else</span><span class="w">
-</span>        <span class="n">projects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">'project.project'</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="w">
+</span>        <span class="n">projects</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s2">&quot;project.project&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="w">
 </span>        <span class="c1"># same with users</span><span class="w">
-</span>        <span class="n">users</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">'res.users'</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="w">
+</span>        <span class="n">users</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s2">&quot;res.users&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="w">
 </span>        <span class="k">return</span> <span class="p">[</span><span class="w">
-</span>            <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">{</span><span class="w">
-</span>                <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'Sample task name'</span><span class="p">,</span><span class="w">
-</span>                <span class="s1">'project_id'</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w">
-</span>                <span class="s1">'user_id'</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w">
-</span>                <span class="s1">'planned_hours'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="w">
-</span>                <span class="s1">'message_needaction'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span><span class="w">
-</span>                <span class="s1">'date_deadline'</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">today</span><span class="p">(),</span><span class="w">
-</span>            <span class="p">})</span><span class="w">
+</span>            <span class="p">(</span><span class="w">
+</span>                <span class="mi">0</span><span class="p">,</span><span class="w">
+</span>                <span class="mi">0</span><span class="p">,</span><span class="w">
+</span>                <span class="p">{</span><span class="w">
+</span>                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sample task name&quot;</span><span class="p">,</span><span class="w">
+</span>                    <span class="s2">&quot;project_id&quot;</span><span class="p">:</span> <span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w">
+</span>                    <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">u</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w">
+</span>                    <span class="s2">&quot;planned_hours&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span><span class="w">
+</span>                    <span class="s2">&quot;message_needaction&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span><span class="w">
+</span>                    <span class="s2">&quot;date_deadline&quot;</span><span class="p">:</span> <span class="n">fields</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">today</span><span class="p">(),</span><span class="w">
+</span>                <span class="p">},</span><span class="w">
+</span>            <span class="p">)</span><span class="w">
 </span>            <span class="c1"># if the project doesn't have a task for the user,</span><span class="w">
 </span>            <span class="c1"># create a new one</span><span class="w">
-</span>            <span class="k">if</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">task_ids</span><span class="o">.</span><span class="n">filtered</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">user_id</span> <span class="o">==</span> <span class="n">u</span><span class="p">)</span> <span class="k">else</span><span class="w">
+</span>            <span class="k">if</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">task_ids</span><span class="o">.</span><span class="n">filtered</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">user_id</span> <span class="o">==</span> <span class="n">u</span><span class="p">)</span><span class="w">
 </span>            <span class="c1"># otherwise, return the task</span><span class="w">
-</span>            <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">task_ids</span><span class="o">.</span><span class="n">filtered</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">user_id</span> <span class="o">==</span> <span class="n">u</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="w">
+</span>            <span class="k">else</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">task_ids</span><span class="o">.</span><span class="n">filtered</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">user_id</span> <span class="o">==</span> <span class="n">u</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="w">
 </span>            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">projects</span><span class="w">
 </span>            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">users</span><span class="w">
 </span>        <span class="p">]</span><span class="w">
 
-</span>    <span class="n">task_ids</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2many</span><span class="p">(</span><span class="s1">'project.task'</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">_default_task_ids</span><span class="p">)</span>
+</span>    <span class="n">task_ids</span> <span class="o">=</span> <span class="n">fields</span><span class="o">.</span><span class="n">Many2many</span><span class="p">(</span><span class="s2">&quot;project.task&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">_default_task_ids</span><span class="p">)</span>
 </pre>
 <p>Now in our wizard, we can use:</p>
 <pre class="code xml literal-block">
@@ -559,7 +564,7 @@ keyboard will enter into the 1st cell until
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/web/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/web/issues/new?body=module:%20web_widget_x2many_2d_matrix%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/web/issues/new?body=module:%20web_widget_x2many_2d_matrix%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -607,7 +612,7 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
 <p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainers</a>:</p>
 <p><a class="reference external image-reference" href="https://github.com/JasminSForgeFlow"><img alt="JasminSForgeFlow" src="https://github.com/JasminSForgeFlow.png?size=40px" /></a> <a class="reference external image-reference" href="https://github.com/DavidJForgeFlow"><img alt="DavidJForgeFlow" src="https://github.com/DavidJForgeFlow.png?size=40px" /></a> <a class="reference external image-reference" href="https://github.com/hbrunn"><img alt="hbrunn" src="https://github.com/hbrunn.png?size=40px" /></a></p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/web/tree/19.0/web_widget_x2many_2d_matrix">OCA/web</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/web/tree/20.0/web_widget_x2many_2d_matrix">OCA/web</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
