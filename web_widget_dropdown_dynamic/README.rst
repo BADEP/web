@@ -20,23 +20,23 @@ Dynamic Dropdown Widget
 .. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github
-    :target: https://github.com/OCA/web/tree/19.0/web_widget_dropdown_dynamic
-    :alt: OCA/web
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb__web_widget_dropdown_dynamic-lightgray.png?logo=github
+    :target: https://github.com/OCA/web__web_widget_dropdown_dynamic/tree/20.0/web_widget_dropdown_dynamic
+    :alt: OCA/web__web_widget_dropdown_dynamic
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/web-19-0/web-19-0-web_widget_dropdown_dynamic
+    :target: https://translation.odoo-community.org/projects/web__web_widget_dropdown_dynamic-20-0/web__web_widget_dropdown_dynamic-20-0-web_widget_dropdown_dynamic
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/web&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/web__web_widget_dropdown_dynamic&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
 Dynamic dropdown widget that supports resolving options from backend of:
 
-   - ``fields.Char``
-   - ``fields.Integer``
-   - ``fields.Selection``
+   -  ``fields.Char``
+   -  ``fields.Integer``
+   -  ``fields.Selection``
 
 **NOTE:** This widget is not intended to *extend* ``fields.Selection``,
 but to filter selection values. For fully-dynamic set of options, use
@@ -55,11 +55,11 @@ Usage
    @api.model
    def method_name(self):
        values = [
-           ('value_a', 'Title A'),
+           ("value_a", "Title A"),
        ]
-       if self.env.context.get('depending_on') == True:
+       if self.env.context.get("depending_on") == True:
            values += [
-               ('value_b', 'Title B'),
+               ("value_b", "Title B"),
            ]
        return values
 
@@ -85,10 +85,10 @@ and Two.
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/web/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/web__web_widget_dropdown_dynamic/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/web/issues/new?body=module:%20web_widget_dropdown_dynamic%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/web__web_widget_dropdown_dynamic/issues/new?body=module:%20web_widget_dropdown_dynamic%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -103,30 +103,29 @@ Authors
 Contributors
 ------------
 
-- `CorporateHub <https://corporatehub.eu/>`__
+-  `CorporateHub <https://corporatehub.eu/>`__
 
-  - Alexey Pelykh <alexey.pelykh@corphub.eu>
+   -  Alexey Pelykh <alexey.pelykh@corphub.eu>
 
-- `Therp BV <https://therp.nl/>`__
+-  `Therp BV <https://therp.nl/>`__
 
-  - Ronald Portier <ronald@therp.nl>
+   -  Ronald Portier <ronald@therp.nl>
 
-- Thanakrit Pintana <thanakrit.p39@gmail.com>
+-  Thanakrit Pintana <thanakrit.p39@gmail.com>
 
-- `Trobz <https://trobz.com>`__:
+-  `Trobz <https://trobz.com>`__:
 
-     - Son Ho <sonho@trobz.com>
+      -  Son Ho <sonho@trobz.com>
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Carlos Roca
+   -  Carlos Roca
 
-- ``Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>``\ \_
+-  ``Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>``\ \_
 
 Other credits
 -------------
 
-The migration of this module from 15.0 to 16.0 was financially supported
 by Camptocamp
 
 Maintainers
@@ -142,6 +141,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/web <https://github.com/OCA/web/tree/19.0/web_widget_dropdown_dynamic>`_ project on GitHub.
+This module is part of the `OCA/web__web_widget_dropdown_dynamic <https://github.com/OCA/web__web_widget_dropdown_dynamic/tree/20.0/web_widget_dropdown_dynamic>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
