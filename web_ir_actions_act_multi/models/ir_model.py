@@ -8,9 +8,10 @@ class IrModelData(models.Model):
     def _module_data_uninstall(self, modules_to_remove):
         # Set a flag to prevent the deletion of tables and columns
         # related to ir.actions.act_multi.
+        records = self
         if "web_ir_actions_act_multi" in modules_to_remove:
-            self = self.with_context(uninstall_web_ir_actions_act_multi=True)
-        return super()._module_data_uninstall(modules_to_remove)
+            records = self.with_context(uninstall_web_ir_actions_act_multi=True)
+        return super(IrModelData, records)._module_data_uninstall(modules_to_remove)
 
 
 class IrModel(models.Model):
