@@ -7,13 +7,14 @@
  * Copyright 2024 Versada (https://versada.eu)
  * License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). */
 
+import {usePlugin} from "@odoo/owl";
 import {ListRenderer} from "@web/views/list/list_renderer";
 import {patch} from "@web/core/utils/patch";
-import {useService} from "@web/core/utils/hooks";
+import {ActionManagerPlugin} from "@web/webclient/actions/action_plugin";
 
 patch(ListRenderer.prototype, {
   setup() {
-    this.actionService = useService("action");
+    this.actionService = usePlugin(ActionManagerPlugin);
     super.setup(...arguments);
   },
   async onClickM2oButton(record, column, ev) {
