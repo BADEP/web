@@ -2,11 +2,11 @@
 @api.model
 def method_name(self):
     values = [
-        ('value_a', 'Title A'),
+        ("value_a", "Title A"),
     ]
-    if self.env.context.get('depending_on') == True:
+    if self.env.context.get("depending_on") == True:
         values += [
-            ('value_b', 'Title B'),
+            ("value_b", "Title B"),
         ]
     return values
 ```
