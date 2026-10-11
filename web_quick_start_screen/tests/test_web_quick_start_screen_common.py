@@ -24,7 +24,7 @@ class WebQuickStartScreenCommon(TransactionCase):
                 "name": "Access rights",
                 "description": "<span>Explore <b>access rights</b></span>",
                 "action_ref_id": f"ir.actions.act_window,"
-                f"{cls.env.ref('base.ir_access_act').id}",
+                f"{cls.env.ref('base.ir_access_action').id}",
                 "icon_name": "fa-eyes",
                 "color": 4,
             }

@@ -20,7 +20,7 @@
         <field
             name="description"
         ><![CDATA[ <span>Explore <b>access rights</b></span>]]></field>
-        <field name="action_ref_id" ref="base.ir_access_act" />
+        <field name="action_ref_id" ref="base.ir_access_action" />
         <field name="icon_name">fa-eye</field>
         <field name="color" eval="4" />
     </record>
@@ -38,7 +38,7 @@
         />
         <field
             name="image"
-            type="base64"
+            type="bytes"
             file="web_quick_start_screen/static/description/icon.png"
         />
     </record>
