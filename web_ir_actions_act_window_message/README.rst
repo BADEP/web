@@ -20,14 +20,14 @@ Client side message boxes
 .. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github
-    :target: https://github.com/OCA/web/tree/19.0/web_ir_actions_act_window_message
-    :alt: OCA/web
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb__web_ir_actions_act_window_message-lightgray.png?logo=github
+    :target: https://github.com/OCA/web__web_ir_actions_act_window_message/tree/20.0/web_ir_actions_act_window_message
+    :alt: OCA/web__web_ir_actions_act_window_message
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/web-19-0/web-19-0-web_ir_actions_act_window_message
+    :target: https://translation.odoo-community.org/projects/web__web_ir_actions_act_window_message-20-0/web__web_ir_actions_act_window_message-20-0-web_ir_actions_act_window_message
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/web&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/web__web_ir_actions_act_window_message&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -48,40 +48,40 @@ Depend on this module and return
 .. code:: python
 
    {
-       'type': 'ir.actions.act_window.message',
-       'title': _('My title'),
-       'message': _('My message'),
+       "type": "ir.actions.act_window.message",
+       "title": _("My title"),
+       "message": _("My message"),
        # optional title of the close button, if not set, will be _('Close')
        # if set False, no close button will be shown
-       'close_button_title': 'Make this window go away',
+       "close_button_title": "Make this window go away",
        # Use HTML instead of text
-       'is_html_message': True,
+       "is_html_message": True,
        # this is an optional list of buttons to show
-       'buttons': [
+       "buttons": [
            # a button can be any action (also ir.actions.report.xml et al)
            {
-               'type': 'ir.actions.act_window',
-               'name': 'All customers',
-               'res_model': 'res.partner',
-               'view_mode': 'form',
-               'views': [[False, 'list'], [False, 'form']],
-               'domain': [('customer', '=', True)],
+               "type": "ir.actions.act_window",
+               "name": "All customers",
+               "res_model": "res.partner",
+               "view_mode": "form",
+               "views": [[False, "list"], [False, "form"]],
+               "domain": [("customer", "=", True)],
            },
            # or if type == method, you need to pass a model, a method name and
            # parameters
            {
-               'type': 'method',
-               'name': _('Yes, do it'),
-               'model': self._name,
-               'method': 'myfunction',
+               "type": "method",
+               "name": _("Yes, do it"),
+               "model": self._name,
+               "method": "myfunction",
                # list of arguments to pass positionally
-               'args': [self.ids],
+               "args": [self.ids],
                # dictionary of keyword arguments
-               'kwargs': {'force': True},
+               "kwargs": {"force": True},
                # button style
-               'classes': 'btn-primary',
-           }
-       ]
+               "classes": "btn-primary",
+           },
+       ],
    }
 
 You are responsible for translating the messages.
@@ -93,15 +93,15 @@ migrators to verify correct function.
 Known issues / Roadmap
 ======================
 
-- add message_type to differenciate between warnings, errors, etc.
+-  add message_type to differenciate between warnings, errors, etc.
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/web/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/web__web_ir_actions_act_window_message/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/web/issues/new?body=module:%20web_ir_actions_act_window_message%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/web__web_ir_actions_act_window_message/issues/new?body=module:%20web_ir_actions_act_window_message%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -117,17 +117,17 @@ Authors
 Contributors
 ------------
 
-- Holger Brunn <hbrunn@therp.nl>
-- Zakaria Makrelouf (ACSONE SA/NV) <z.makrelouf@gmail.com>
-- Benjamin Willig (ACSONE SA/NV) <benjamin.willig@acsone.eu>
-- Ioan Galan (Studio73) <ioan@studio73.es>
-- Abraham Anes (Studio73) <abraham@studio73.es>
-- Miguel Gandia (Studio73) <miguel@studio73.es>
-- Sergio Martínez (Studio73) <sergio.martinez@studio73.es>
-- `DynApps NV <https://www.dynapps.be>`__:
+-  Holger Brunn <hbrunn@therp.nl>
+-  Zakaria Makrelouf (ACSONE SA/NV) <z.makrelouf@gmail.com>
+-  Benjamin Willig (ACSONE SA/NV) <benjamin.willig@acsone.eu>
+-  Ioan Galan (Studio73) <ioan@studio73.es>
+-  Abraham Anes (Studio73) <abraham@studio73.es>
+-  Miguel Gandia (Studio73) <miguel@studio73.es>
+-  Sergio Martínez (Studio73) <sergio.martinez@studio73.es>
+-  `DynApps NV <https://www.dynapps.be>`__:
 
-  - Koen Loodts
-  - Raf Ven
+   -  Koen Loodts
+   -  Raf Ven
 
 Maintainers
 -----------
@@ -150,6 +150,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-hbrunn| 
 
-This module is part of the `OCA/web <https://github.com/OCA/web/tree/19.0/web_ir_actions_act_window_message>`_ project on GitHub.
+This module is part of the `OCA/web__web_ir_actions_act_window_message <https://github.com/OCA/web__web_ir_actions_act_window_message/tree/20.0/web_ir_actions_act_window_message>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

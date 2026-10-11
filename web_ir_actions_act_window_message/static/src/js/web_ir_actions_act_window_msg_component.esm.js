@@ -1,14 +1,15 @@
-import {Component, onWillStart, useState} from "@odoo/owl";
+import {Component, onWillStart, proxy, usePlugin} from "@odoo/owl";
 import {Dialog} from "@web/core/dialog/dialog";
 import {_t} from "@web/core/l10n/translation";
 import {useService} from "@web/core/utils/hooks";
 import {router} from "@web/core/browser/router";
+import {ActionManagerPlugin} from "@web/webclient/actions/action_plugin";
 
 export class ActWindowMessageDialog extends Component {
   setup() {
     this.orm = useService("orm");
-    this.action = useService("action");
-    this.state = useState({
+    this.action = usePlugin(ActionManagerPlugin);
+    this.state = proxy({
       buttons: [],
     });
     onWillStart(this.willStart);

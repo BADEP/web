@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils: https://docutils.sourceforge.io/" />
-<title>README.rst</title>
+<meta name="generator" content="Docutilsb1.dev: https://docutils.sourceforge.io/" />
+<title>Client side message boxes</title>
 <style type="text/css">
 
 /*
 :Author: David Goodger (goodger@python.org)
-:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
+:Id: $Id$
 :Copyright: This stylesheet has been placed in the public domain.
 
 Default cascading style sheet for the HTML output of Docutils.
@@ -374,7 +374,7 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:9184322a535aa19845f4b037db4e5de2efba5a74a0cee6771f7ed639098e70dd
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/license-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/web/tree/19.0/web_ir_actions_act_window_message"><img alt="OCA/web" src="https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/web-19-0/web-19-0-web_ir_actions_act_window_message"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/web&amp;target_branch=19.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/license-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/web__web_ir_actions_act_window_message/tree/20.0/web_ir_actions_act_window_message"><img alt="OCA/web__web_ir_actions_act_window_message" src="https://img.shields.io/badge/github-OCA%2Fweb__web_ir_actions_act_window_message-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/web__web_ir_actions_act_window_message-20-0/web__web_ir_actions_act_window_message-20-0-web_ir_actions_act_window_message"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/web__web_ir_actions_act_window_message&amp;target_branch=20.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
 <p>This module allows to show a message popup on the client side as result
 of a button.</p>
 <p><strong>Table of contents</strong></p>
@@ -396,40 +396,40 @@ of a button.</p>
 <p>Depend on this module and return</p>
 <pre class="code python literal-block">
 <span class="p">{</span><span class="w">
-</span>    <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'ir.actions.act_window.message'</span><span class="p">,</span><span class="w">
-</span>    <span class="s1">'title'</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">'My title'</span><span class="p">),</span><span class="w">
-</span>    <span class="s1">'message'</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">'My message'</span><span class="p">),</span><span class="w">
+</span>    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ir.actions.act_window.message&quot;</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;My title&quot;</span><span class="p">),</span><span class="w">
+</span>    <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;My message&quot;</span><span class="p">),</span><span class="w">
 </span>    <span class="c1"># optional title of the close button, if not set, will be _('Close')</span><span class="w">
 </span>    <span class="c1"># if set False, no close button will be shown</span><span class="w">
-</span>    <span class="s1">'close_button_title'</span><span class="p">:</span> <span class="s1">'Make this window go away'</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">&quot;close_button_title&quot;</span><span class="p">:</span> <span class="s2">&quot;Make this window go away&quot;</span><span class="p">,</span><span class="w">
 </span>    <span class="c1"># Use HTML instead of text</span><span class="w">
-</span>    <span class="s1">'is_html_message'</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span><span class="w">
+</span>    <span class="s2">&quot;is_html_message&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span><span class="w">
 </span>    <span class="c1"># this is an optional list of buttons to show</span><span class="w">
-</span>    <span class="s1">'buttons'</span><span class="p">:</span> <span class="p">[</span><span class="w">
+</span>    <span class="s2">&quot;buttons&quot;</span><span class="p">:</span> <span class="p">[</span><span class="w">
 </span>        <span class="c1"># a button can be any action (also ir.actions.report.xml et al)</span><span class="w">
 </span>        <span class="p">{</span><span class="w">
-</span>            <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'ir.actions.act_window'</span><span class="p">,</span><span class="w">
-</span>            <span class="s1">'name'</span><span class="p">:</span> <span class="s1">'All customers'</span><span class="p">,</span><span class="w">
-</span>            <span class="s1">'res_model'</span><span class="p">:</span> <span class="s1">'res.partner'</span><span class="p">,</span><span class="w">
-</span>            <span class="s1">'view_mode'</span><span class="p">:</span> <span class="s1">'form'</span><span class="p">,</span><span class="w">
-</span>            <span class="s1">'views'</span><span class="p">:</span> <span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'list'</span><span class="p">],</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="s1">'form'</span><span class="p">]],</span><span class="w">
-</span>            <span class="s1">'domain'</span><span class="p">:</span> <span class="p">[(</span><span class="s1">'customer'</span><span class="p">,</span> <span class="s1">'='</span><span class="p">,</span> <span class="kc">True</span><span class="p">)],</span><span class="w">
+</span>            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ir.actions.act_window&quot;</span><span class="p">,</span><span class="w">
+</span>            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;All customers&quot;</span><span class="p">,</span><span class="w">
+</span>            <span class="s2">&quot;res_model&quot;</span><span class="p">:</span> <span class="s2">&quot;res.partner&quot;</span><span class="p">,</span><span class="w">
+</span>            <span class="s2">&quot;view_mode&quot;</span><span class="p">:</span> <span class="s2">&quot;form&quot;</span><span class="p">,</span><span class="w">
+</span>            <span class="s2">&quot;views&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;list&quot;</span><span class="p">],</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;form&quot;</span><span class="p">]],</span><span class="w">
+</span>            <span class="s2">&quot;domain&quot;</span><span class="p">:</span> <span class="p">[(</span><span class="s2">&quot;customer&quot;</span><span class="p">,</span> <span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)],</span><span class="w">
 </span>        <span class="p">},</span><span class="w">
 </span>        <span class="c1"># or if type == method, you need to pass a model, a method name and</span><span class="w">
 </span>        <span class="c1"># parameters</span><span class="w">
 </span>        <span class="p">{</span><span class="w">
-</span>            <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'method'</span><span class="p">,</span><span class="w">
-</span>            <span class="s1">'name'</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s1">'Yes, do it'</span><span class="p">),</span><span class="w">
-</span>            <span class="s1">'model'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span><span class="w">
-</span>            <span class="s1">'method'</span><span class="p">:</span> <span class="s1">'myfunction'</span><span class="p">,</span><span class="w">
+</span>            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;method&quot;</span><span class="p">,</span><span class="w">
+</span>            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;Yes, do it&quot;</span><span class="p">),</span><span class="w">
+</span>            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="p">,</span><span class="w">
+</span>            <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;myfunction&quot;</span><span class="p">,</span><span class="w">
 </span>            <span class="c1"># list of arguments to pass positionally</span><span class="w">
-</span>            <span class="s1">'args'</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ids</span><span class="p">],</span><span class="w">
+</span>            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ids</span><span class="p">],</span><span class="w">
 </span>            <span class="c1"># dictionary of keyword arguments</span><span class="w">
-</span>            <span class="s1">'kwargs'</span><span class="p">:</span> <span class="p">{</span><span class="s1">'force'</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span><span class="w">
+</span>            <span class="s2">&quot;kwargs&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;force&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span><span class="w">
 </span>            <span class="c1"># button style</span><span class="w">
-</span>            <span class="s1">'classes'</span><span class="p">:</span> <span class="s1">'btn-primary'</span><span class="p">,</span><span class="w">
-</span>        <span class="p">}</span><span class="w">
-</span>    <span class="p">]</span><span class="w">
+</span>            <span class="s2">&quot;classes&quot;</span><span class="p">:</span> <span class="s2">&quot;btn-primary&quot;</span><span class="p">,</span><span class="w">
+</span>        <span class="p">},</span><span class="w">
+</span>    <span class="p">],</span><span class="w">
 </span><span class="p">}</span>
 </pre>
 <p>You are responsible for translating the messages.</p>
@@ -445,10 +445,10 @@ migrators to verify correct function.</p>
 </div>
 <div class="section" id="bug-tracker">
 <h2><a class="toc-backref" href="#toc-entry-3">Bug Tracker</a></h2>
-<p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/web/issues">GitHub Issues</a>.
+<p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/web__web_ir_actions_act_window_message/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/web/issues/new?body=module:%20web_ir_actions_act_window_message%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/web__web_ir_actions_act_window_message/issues/new?body=module:%20web_ir_actions_act_window_message%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -488,7 +488,7 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
 <p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
 <p><a class="reference external image-reference" href="https://github.com/hbrunn"><img alt="hbrunn" src="https://github.com/hbrunn.png?size=40px" /></a></p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/web/tree/19.0/web_ir_actions_act_window_message">OCA/web</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/web__web_ir_actions_act_window_message/tree/20.0/web_ir_actions_act_window_message">OCA/web__web_ir_actions_act_window_message</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
