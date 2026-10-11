@@ -3,19 +3,13 @@
  * Copyright 2024 Tecnativa - Carlos López
  * License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
  */
-import {
-  Component,
-  onMounted,
-  onWillStart,
-  onWillUpdateProps,
-  useRef,
-  useState,
-} from "@odoo/owl";
+import {Component, onMounted, onWillStart, onWillUpdateProps, proxy} from "@odoo/owl";
 import {TimelineCanvas} from "./timeline_canvas.esm";
 import {_t} from "@web/core/l10n/translation";
 import {loadBundle} from "@web/core/assets";
 import {renderToString} from "@web/core/utils/render";
 import {useService} from "@web/core/utils/hooks";
+import {useRef} from "@web/owl2/utils";
 
 const {DateTime} = luxon;
 
@@ -26,7 +20,7 @@ export class TimelineRenderer extends Component {
     this.canvasRef = useRef("canvas");
     this.model = this.props.model;
     this.params = this.model.params;
-    this.mode = useState({data: this.params.mode});
+    this.mode = proxy({data: this.params.mode});
     this.options = this.params.options;
     this.min_height = this.params.min_height;
     this.date_start = this.params.date_start;

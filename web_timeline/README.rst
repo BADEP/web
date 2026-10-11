@@ -20,14 +20,14 @@ Web timeline
 .. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github
-    :target: https://github.com/OCA/web/tree/19.0/web_timeline
-    :alt: OCA/web
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb__web_timeline-lightgray.png?logo=github
+    :target: https://github.com/OCA/web__web_timeline/tree/20.0/web_timeline
+    :alt: OCA/web__web_timeline
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/web-19-0/web-19-0-web_timeline
+    :target: https://translation.odoo-community.org/projects/web__web_timeline-20-0/web__web_timeline-20-0-web_timeline
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/web&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/web__web_timeline&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -49,76 +49,100 @@ Configuration
 You need to define a view with the tag <timeline> as base element. These
 are the possible attributes for the tag:
 
-+------------------+-----------+--------------------------------------------------------+
-| Attribute        | Required? | Description                                            |
-+==================+===========+========================================================+
-| date_start       | **Yes**   | Defines the name of the field of type date that        |
-|                  |           | contains the start of the event.                       |
-+------------------+-----------+--------------------------------------------------------+
-| date_stop        | No        | Defines the name of the field of type date that        |
-|                  |           | contains the end of the event. The date_stop can be    |
-|                  |           | equal to the attribute date_start to display events    |
-|                  |           | has 'point' on the Timeline (instantaneous event).     |
-+------------------+-----------+--------------------------------------------------------+
-| date_delay       | No        | Defines the name of the field of type float/integer    |
-|                  |           | that contain the duration in hours of the event,       |
-|                  |           | default = 1.                                           |
-+------------------+-----------+--------------------------------------------------------+
-| default_group_by | **Yes**   | Defines the name of the field that will be taken as    |
-|                  |           | default group by when accessing the view or when no    |
-|                  |           | other group by is selected.                            |
-+------------------+-----------+--------------------------------------------------------+
-| zoomKey          | No        | Specifies whether the Timeline is only zoomed when an  |
-|                  |           | additional key is down. Available values are '' (does  |
-|                  |           | not apply), 'altKey', 'ctrlKey', or 'metaKey'. Set     |
-|                  |           | this option if you want to be able to use the scroll   |
-|                  |           | to navigate vertically on views with a lot of events.  |
-+------------------+-----------+--------------------------------------------------------+
-| mode             | No        | Specifies the initial visible window. Available values |
-|                  |           | are: 'day' to display the current day, 'week', 'month' |
-|                  |           | and 'fit'. Default value is 'fit' to adjust the        |
-|                  |           | visible window such that it fits all items.            |
-+------------------+-----------+--------------------------------------------------------+
-| margin           | No        | Specifies the margins around the items. It should      |
-|                  |           | respect the JSON format. For example                   |
-|                  |           | '{"item":{"horizontal":-10}}'. Available values are:   |
-|                  |           | '{"axis":<number>}' (The minimal margin in pixels      |
-|                  |           | between items and the time axis) '{"item":<number>}'   |
-|                  |           | (The minimal margin in pixels between items in both    |
-|                  |           | horizontal and vertical direction),                    |
-|                  |           | '{"item":{"horizontal":<number>}}' (The minimal        |
-|                  |           | horizontal margin in pixels between items),            |
-|                  |           | '{"item":{"vertical":<number>}}' (The minimal vertical |
-|                  |           | margin in pixels between items),                       |
-|                  |           | '{"item":{"horizontal":<number>,"vertical":<number>}}' |
-|                  |           | (Combination between horizontal and vertical margins   |
-|                  |           | in pixels between items).                              |
-+------------------+-----------+--------------------------------------------------------+
-| event_open_popup | No        | When set to true, it allows to edit the events in a    |
-|                  |           | popup. If not (default value), the record is edited    |
-|                  |           | changing to form view.                                 |
-+------------------+-----------+--------------------------------------------------------+
-| stack            | No        | When set to false, items will not be stacked on top of |
-|                  |           | each other such that they do overlap.                  |
-+------------------+-----------+--------------------------------------------------------+
-| colors           | No        | Allows to set certain specific colors if the expressed |
-|                  |           | condition (JS syntax) is met.                          |
-+------------------+-----------+--------------------------------------------------------+
-| dependency_arrow | No        | Set this attribute to a x2many field to draw arrows    |
-|                  |           | between the records referenced in the x2many field.    |
-+------------------+-----------+--------------------------------------------------------+
++------------------+-----------+-------------------------------------+
+| Attribute        | Required? | Description                         |
++==================+===========+=====================================+
+| date_start       | **Yes**   | Defines the name of the field of    |
+|                  |           | type date that contains the start   |
+|                  |           | of the event.                       |
++------------------+-----------+-------------------------------------+
+| date_stop        | No        | Defines the name of the field of    |
+|                  |           | type date that contains the end of  |
+|                  |           | the event. The date_stop can be     |
+|                  |           | equal to the attribute date_start   |
+|                  |           | to display events has 'point' on    |
+|                  |           | the Timeline (instantaneous event). |
++------------------+-----------+-------------------------------------+
+| date_delay       | No        | Defines the name of the field of    |
+|                  |           | type float/integer that contain the |
+|                  |           | duration in hours of the event,     |
+|                  |           | default = 1.                        |
++------------------+-----------+-------------------------------------+
+| default_group_by | **Yes**   | Defines the name of the field that  |
+|                  |           | will be taken as default group by   |
+|                  |           | when accessing the view or when no  |
+|                  |           | other group by is selected.         |
++------------------+-----------+-------------------------------------+
+| zoomKey          | No        | Specifies whether the Timeline is   |
+|                  |           | only zoomed when an additional key  |
+|                  |           | is down. Available values are ''    |
+|                  |           | (does not apply), 'altKey',         |
+|                  |           | 'ctrlKey', or 'metaKey'. Set this   |
+|                  |           | option if you want to be able to    |
+|                  |           | use the scroll to navigate          |
+|                  |           | vertically on views with a lot of   |
+|                  |           | events.                             |
++------------------+-----------+-------------------------------------+
+| mode             | No        | Specifies the initial visible       |
+|                  |           | window. Available values are: 'day' |
+|                  |           | to display the current day, 'week', |
+|                  |           | 'month' and 'fit'. Default value is |
+|                  |           | 'fit' to adjust the visible window  |
+|                  |           | such that it fits all items.        |
++------------------+-----------+-------------------------------------+
+| margin           | No        | Specifies the margins around the    |
+|                  |           | items. It should respect the JSON   |
+|                  |           | format. For example                 |
+|                  |           | '{"item":{"horizontal":-10}}'.      |
+|                  |           | Available values are:               |
+|                  |           | '{"axis":<number>}' (The minimal    |
+|                  |           | margin in pixels between items and  |
+|                  |           | the time axis) '{"item":<number>}'  |
+|                  |           | (The minimal margin in pixels       |
+|                  |           | between items in both horizontal    |
+|                  |           | and vertical direction),            |
+|                  |           | '{"item":{"horizontal":<number>}}'  |
+|                  |           | (The minimal horizontal margin in   |
+|                  |           | pixels between items),              |
+|                  |           | '{"item":{"vertical":<number>}}'    |
+|                  |           | (The minimal vertical margin in     |
+|                  |           | pixels between items),              |
+|                  |           | '{"item":{"horizont                 |
+|                  |           | al":<number>,"vertical":<number>}}' |
+|                  |           | (Combination between horizontal and |
+|                  |           | vertical margins in pixels between  |
+|                  |           | items).                             |
++------------------+-----------+-------------------------------------+
+| event_open_popup | No        | When set to true, it allows to edit |
+|                  |           | the events in a popup. If not       |
+|                  |           | (default value), the record is      |
+|                  |           | edited changing to form view.       |
++------------------+-----------+-------------------------------------+
+| stack            | No        | When set to false, items will not   |
+|                  |           | be stacked on top of each other     |
+|                  |           | such that they do overlap.          |
++------------------+-----------+-------------------------------------+
+| colors           | No        | Allows to set certain specific      |
+|                  |           | colors if the expressed condition   |
+|                  |           | (JS syntax) is met.                 |
++------------------+-----------+-------------------------------------+
+| dependency_arrow | No        | Set this attribute to a x2many      |
+|                  |           | field to draw arrows between the    |
+|                  |           | records referenced in the x2many    |
+|                  |           | field.                              |
++------------------+-----------+-------------------------------------+
 
 Optionally you can declare a custom template, which will be used to
 render the timeline items. You have to name the template
 'timeline-item'. These are the variables available in template
 rendering:
 
-- ``record``: to access the fields values selected in the timeline
-  definition.
-- ``formatters``: used to format values (see available functions in
-  ``@web/views/fields/formatters``).
-- ``parsers``: used to parse values (see available functions in
-  ``@web/views/fields/parsers``).
+-  ``record``: to access the fields values selected in the timeline
+   definition.
+-  ``formatters``: used to format values (see available functions in
+   ``@web/views/fields/formatters``).
+-  ``parsers``: used to parse values (see available functions in
+   ``@web/views/fields/parsers``).
 
 You also need to declare the view in an action window of the involved
 model.
@@ -223,28 +247,28 @@ create a new record with the dragged start and end date.
 Known issues / Roadmap
 ======================
 
-- Implement a more efficient way of refreshing timeline after a record
-  update;
-- Make ``attrs`` attribute work;
-- When grouping by m2m and more than one record is set, the timeline
-  item appears only on one group. Allow showing in both groups.
-- When grouping by m2m and dragging for changing the time or the group,
-  the changes on the group will not be set, because it could make
-  disappear the records not related with the changes that we want to
-  make. When the item is showed in all groups change the value according
-  the group of the dragged item.
-- When an item label does not fit in its date-range box: ✅ the label
-  correctly overflows the box; ✅ clicking anywhere on the label allows
-  moving the box; ❌ double-clicking the label outside of the box does
-  not open that item.
+-  Implement a more efficient way of refreshing timeline after a record
+   update;
+-  Make ``attrs`` attribute work;
+-  When grouping by m2m and more than one record is set, the timeline
+   item appears only on one group. Allow showing in both groups.
+-  When grouping by m2m and dragging for changing the time or the group,
+   the changes on the group will not be set, because it could make
+   disappear the records not related with the changes that we want to
+   make. When the item is showed in all groups change the value
+   according the group of the dragged item.
+-  When an item label does not fit in its date-range box: ✅ the label
+   correctly overflows the box; ✅ clicking anywhere on the label allows
+   moving the box; ❌ double-clicking the label outside of the box does
+   not open that item.
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/web/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/web__web_timeline/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/web/issues/new?body=module:%20web_timeline%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/web__web_timeline/issues/new?body=module:%20web_timeline%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -263,32 +287,32 @@ Authors
 Contributors
 ------------
 
-- Laurent Mignon <laurent.mignon@acsone.eu>
-- Adrien Peiffer <adrien.peiffer@acsone.eu>
-- Leonardo Donelli <donelli@webmonks.it>
-- Adrien Didenot <adrien.didenot@horanet.com>
-- Thong Nguyen Van <thongnv@trobz.com>
-- Murtaza Mithaiwala <mmithaiwala@opensourceintegrators.com>
-- Ammar Officewala <aofficewala@opensourceintegrators.com>
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  Laurent Mignon <laurent.mignon@acsone.eu>
+-  Adrien Peiffer <adrien.peiffer@acsone.eu>
+-  Leonardo Donelli <donelli@webmonks.it>
+-  Adrien Didenot <adrien.didenot@horanet.com>
+-  Thong Nguyen Van <thongnv@trobz.com>
+-  Murtaza Mithaiwala <mmithaiwala@opensourceintegrators.com>
+-  Ammar Officewala <aofficewala@opensourceintegrators.com>
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Pedro M. Baeza
-  - Alexandre Díaz
-  - César A. Sánchez
-  - Carlos López
+   -  Pedro M. Baeza
+   -  Alexandre Díaz
+   -  César A. Sánchez
+   -  Carlos López
 
-- `Onestein <https://www.onestein.nl>`__:
+-  `Onestein <https://www.onestein.nl>`__:
 
-  - Dennis Sluijk <d.sluijk@onestein.nl>
-  - Anjeel Haria
+   -  Dennis Sluijk <d.sluijk@onestein.nl>
+   -  Anjeel Haria
 
-- `XCG Consulting <https://xcg-consulting.fr>`__:
+-  `XCG Consulting <https://xcg-consulting.fr>`__:
 
-  - Houzéfa Abbasbhay
+   -  Houzéfa Abbasbhay
 
-- `PyTech <https://www.pytech.it>`__:
+-  `PyTech <https://www.pytech.it>`__:
 
-  - Simone Rubino <simone.rubino@pytech.it>
+   -  Simone Rubino <simone.rubino@pytech.it>
 
 Maintainers
 -----------
@@ -303,6 +327,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/web <https://github.com/OCA/web/tree/19.0/web_timeline>`_ project on GitHub.
+This module is part of the `OCA/web__web_timeline <https://github.com/OCA/web__web_timeline/tree/20.0/web_timeline>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
