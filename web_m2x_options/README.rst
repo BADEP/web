@@ -20,14 +20,14 @@ web_m2x_options
 .. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb-lightgray.png?logo=github
-    :target: https://github.com/OCA/web/tree/19.0/web_m2x_options
-    :alt: OCA/web
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fweb__web_m2x_options-lightgray.png?logo=github
+    :target: https://github.com/OCA/web__web_m2x_options/tree/20.0/web_m2x_options
+    :alt: OCA/web__web_m2x_options
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/web-19-0/web-19-0-web_m2x_options
+    :target: https://translation.odoo-community.org/projects/web__web_m2x_options-20-0/web__web_m2x_options-20-0-web_m2x_options
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/web&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/web__web_m2x_options&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -100,10 +100,10 @@ create rights)
 To add these parameters go to Configuration -> Technical -> Parameters
 -> System Parameters and add new parameters like:
 
-- web_m2x_options.create: False
-- web_m2x_options.create_edit: False
-- web_m2x_options.limit: 10
-- web_m2x_options.field_limit_entries: 5
+-  web_m2x_options.create: False
+-  web_m2x_options.create_edit: False
+-  web_m2x_options.limit: 10
+-  web_m2x_options.field_limit_entries: 5
 
 Example
 -------
@@ -125,18 +125,18 @@ set on a field ! If nothing works, add a debugger in the first line of
 something in a many2one field, javascript debugger should pause. If not
 verify your installation.
 
-- Instead of making the tags rectangle clickable, I think it's better to
-  put the text as a clickable link, so we will get a consistent
-  behaviour/aspect with other clickable elements (many2one...).
-- Properly support web_m2x_options on Many2OneReferenceField.
+-  Instead of making the tags rectangle clickable, I think it's better
+   to put the text as a clickable link, so we will get a consistent
+   behaviour/aspect with other clickable elements (many2one...).
+-  Properly support web_m2x_options on Many2OneReferenceField.
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/web/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/web__web_m2x_options/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/web/issues/new?body=module:%20web_m2x_options%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/web__web_m2x_options/issues/new?body=module:%20web_m2x_options%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -155,42 +155,42 @@ Authors
 Contributors
 ------------
 
-- David Coninckx <davconinckx@gmail.com>
+-  David Coninckx <davconinckx@gmail.com>
 
-- Emanuel Cino <ecino@compassion.ch>
+-  Emanuel Cino <ecino@compassion.ch>
 
-- Holger Brunn <hbrunn@therp.nl>
+-  Holger Brunn <hbrunn@therp.nl>
 
-- Nicolas JEUDY <nicolas@sudokeys.com>
+-  Nicolas JEUDY <nicolas@sudokeys.com>
 
-- Yannick Vaucher <yannick.vaucher@camptocamp.com>
+-  Yannick Vaucher <yannick.vaucher@camptocamp.com>
 
-- Zakaria Makrelouf <z.makrelouf@gmail.com>
+-  Zakaria Makrelouf <z.makrelouf@gmail.com>
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Jairo Llopis <jairo.llopis@tecnativa.com>
-  - David Vidal <david.vidal@tecnativa.com>
-  - Ernesto Tejeda <ernesto.tejeda87@gmail.com>
-  - Carlos Roca
+   -  Jairo Llopis <jairo.llopis@tecnativa.com>
+   -  David Vidal <david.vidal@tecnativa.com>
+   -  Ernesto Tejeda <ernesto.tejeda87@gmail.com>
+   -  Carlos Roca
 
-- Bhavesh Odedra <bodedra@opensourceintegrators.com>
+-  Bhavesh Odedra <bodedra@opensourceintegrators.com>
 
-- Dhara Solanki <dhara.solanki@initos.com> (http://www.initos.com)
+-  Dhara Solanki <dhara.solanki@initos.com> (http://www.initos.com)
 
-- `Trobz <https://trobz.com>`__:
+-  `Trobz <https://trobz.com>`__:
 
-  - Hoang Diep <hoang@trobz.com>
+   -  Hoang Diep <hoang@trobz.com>
 
-- `Sygel <https://sygel.es>`__:
+-  `Sygel <https://sygel.es>`__:
 
-  - Manuel Regidor <manuel.regidor@sygel.es>
-  - Valentín Vinagre <valentin.vinagre@sygel.es>
-  - Harald Panten <harald.panten@sygel.es>
+   -  Manuel Regidor <manuel.regidor@sygel.es>
+   -  Valentín Vinagre <valentin.vinagre@sygel.es>
+   -  Harald Panten <harald.panten@sygel.es>
 
-- `ACSONE SA/NV <https://acsone.eu>`__:
+-  `ACSONE SA/NV <https://acsone.eu>`__:
 
-  - Souheil BEJAOUI <souheil.bejaoui@acsone.eu>
+   -  Souheil BEJAOUI <souheil.bejaoui@acsone.eu>
 
 Other credits
 -------------
@@ -210,6 +210,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/web <https://github.com/OCA/web/tree/19.0/web_m2x_options>`_ project on GitHub.
+This module is part of the `OCA/web__web_m2x_options <https://github.com/OCA/web__web_m2x_options/tree/20.0/web_m2x_options>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

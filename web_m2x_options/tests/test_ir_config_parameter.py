@@ -8,9 +8,9 @@ class TestIrConfigParameter(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.env["ir.config_parameter"].set_param("web_m2x_options.limit", 10)
-        cls.env["ir.config_parameter"].set_param("web_m2x_options.create_edit", "True")
-        cls.env["ir.config_parameter"].set_param("web_m2x_options.create", "True")
+        cls.env["ir.config_parameter"].set_str("web_m2x_options.limit", 10)
+        cls.env["ir.config_parameter"].set_str("web_m2x_options.create_edit", "True")
+        cls.env["ir.config_parameter"].set_str("web_m2x_options.create", "True")
 
     def test_web_m2x_options_key(self):
         web_m2x_options = self.env["ir.config_parameter"].get_web_m2x_options()
