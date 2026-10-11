@@ -7,7 +7,7 @@ from odoo.tools.sql import column_exists, create_column
 def prepare_column_can_have_options(cr):
     """Creates column ``ir_model_fields.can_have_options`` and fills its values"""
     if not column_exists(cr, "ir_model_fields", "can_have_options"):
-        create_column(cr, "ir_model_fields", "can_have_options", "boolean")
+        create_column(cr, "ir_model_fields", "can_have_options", "bool")
         cr.execute(
             """
             UPDATE ir_model_fields

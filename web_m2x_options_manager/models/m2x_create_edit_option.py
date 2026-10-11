@@ -2,8 +2,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, fields, models
+from odoo.api import ormcache
 from odoo.exceptions import ValidationError
-from odoo.tools.cache import ormcache
 from odoo.tools.safe_eval import safe_eval
 
 
@@ -23,7 +23,6 @@ class M2xCreateEditOption(models.Model):
         ondelete="cascade",
         required=True,
         index=True,
-        string="Field",
     )
     field_name = fields.Char(
         related="field_id.name",
@@ -113,7 +112,8 @@ class M2xCreateEditOption(models.Model):
             - ``m2x.create.edit.option._get_id()``
             - ``ir.ui.view._get_view_cache()``
         """
-        self.env.registry.clear_cache(*self._clear_caches_get_names(*cache_names))
+        for cache_name in self._clear_caches_get_names(*cache_names):
+            self.env.transaction.invalidate_ormcache(cache_name)
 
     def _clear_caches_get_names(self, *cache_names) -> list[str]:
         """Retrieves registry caches names for clearance
