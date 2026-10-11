@@ -1,4 +1,5 @@
-import {Component, onWillRender} from "@odoo/owl";
+import {Component} from "@odoo/owl";
+import {onWillRender} from "@web/owl2/utils";
 import {ActionDialog} from "@web/webclient/actions/action_dialog";
 import {Dialog} from "@web/core/dialog/dialog";
 import {SelectCreateDialog} from "@web/views/view_dialogs/select_create_dialog";
