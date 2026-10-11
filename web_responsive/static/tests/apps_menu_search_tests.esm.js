@@ -24,30 +24,30 @@ let baseConfig = {};
 let target = {};
 
 QUnit.module("AppsMenu Search", {
-    async beforeEach() {
-        target = getFixture();
-        serviceRegistry.add("menu", menuService);
-        serviceRegistry.add("action", actionService);
-        serviceRegistry.add("notification", notificationService);
-        serviceRegistry.add("hotkey", hotkeyService);
-        serviceRegistry.add("ui", uiService);
-        patchWithCleanup(browser, {
-            setTimeout: (handler, delay, ...args) => handler(...args),
-            clearTimeout: () => undefined,
-        });
-        const menus = {
-            root: {id: "root", children: [1, 2], name: "root", appID: "root"},
-            1: {id: 1, children: [], name: "App0", appID: 1, xmlid: "menu_1"},
-            2: {id: 2, children: [], name: "App1", appID: 2, xmlid: "menu_2"},
-        };
-        const serverData = {menus};
-        baseConfig = {serverData};
-    },
+  async beforeEach() {
+    target = getFixture();
+    serviceRegistry.add("menu", menuService);
+    serviceRegistry.add("action", actionService);
+    serviceRegistry.add("notification", notificationService);
+    serviceRegistry.add("hotkey", hotkeyService);
+    serviceRegistry.add("ui", uiService);
+    patchWithCleanup(browser, {
+      setTimeout: (handler, delay, ...args) => handler(...args),
+      clearTimeout: () => undefined,
+    });
+    const menus = {
+      root: {id: "root", children: [1, 2], name: "root", appID: "root"},
+      1: {id: 1, children: [], name: "App0", appID: 1, xmlid: "menu_1"},
+      2: {id: 2, children: [], name: "App1", appID: 2, xmlid: "menu_2"},
+    };
+    const serverData = {menus};
+    baseConfig = {serverData};
+  },
 });
 
 QUnit.test("can be rendered", async (assert) => {
-    const env = await makeTestEnv(baseConfig);
-    await mount(NavBar, target, {env});
-    await click(target, "button.o_grid_apps_menu__button");
-    assert.containsOnce(target, ".app-menu-container .search-input");
+  const env = await makeTestEnv(baseConfig);
+  await mount(NavBar, target, {env});
+  await click(target, "button.o_grid_apps_menu__button");
+  assert.containsOnce(target, ".app-menu-container .search-input");
 });

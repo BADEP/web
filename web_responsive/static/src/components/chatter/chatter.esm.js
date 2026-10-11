@@ -8,20 +8,20 @@ import {patch} from "@web/core/utils/patch";
 import {useEffect} from "@odoo/owl";
 
 patch(Chatter.prototype, {
-    setup() {
-        super.setup();
-        useEffect(this._resetScrollToAttachmentsEffect.bind(this), () => [
-            this.state.isAttachmentBoxOpened,
-        ]);
-    },
-    /**
-     * Prevent scrollIntoView error
-     * @param {Boolean} isAttachmentBoxOpened
-     * @private
-     */
-    _resetScrollToAttachmentsEffect(isAttachmentBoxOpened) {
-        if (!isAttachmentBoxOpened) {
-            this.state.scrollToAttachments = 0;
-        }
-    },
+  setup() {
+    super.setup();
+    useEffect(this._resetScrollToAttachmentsEffect.bind(this), () => [
+      this.state.isAttachmentBoxOpened,
+    ]);
+  },
+  /**
+   * Prevent scrollIntoView error
+   * @param {Boolean} isAttachmentBoxOpened
+   * @private
+   */
+  _resetScrollToAttachmentsEffect(isAttachmentBoxOpened) {
+    if (!isAttachmentBoxOpened) {
+      this.state.scrollToAttachments = 0;
+    }
+  },
 });

@@ -13,62 +13,62 @@ const formChatterClassName = ".o-mail-Form-chatter";
 const formViewSheetClassName = ".o_form_view_container .o_form_sheet_bg";
 
 export function useFileViewerContainerSize(ref) {
-    function updateActualFormChatterSize() {
-        /** @type {HTMLDivElement}*/
-        const chatterElement = document.querySelector(formChatterClassName);
-        /** @type {HTMLDivElement}*/
-        const formSheetElement = document.querySelector(formViewSheetClassName);
-        if (chatterElement && formSheetElement && ref.el) {
-            /** @type {CSSStyleDeclaration}*/
-            const elStyle = ref.el.style;
-            const width = `${chatterElement.clientWidth}px`;
-            const height = `${chatterElement.clientHeight}px`;
-            const left = `${formSheetElement.clientWidth}px`;
-            elStyle.setProperty("--o-FileViewerContainer-width", width);
-            elStyle.setProperty("--o-FileViewerContainer-height", height);
-            elStyle.setProperty("--o-FileViewerContainer-left", left);
-        }
+  function updateActualFormChatterSize() {
+    /** @type {HTMLDivElement}*/
+    const chatterElement = document.querySelector(formChatterClassName);
+    /** @type {HTMLDivElement}*/
+    const formSheetElement = document.querySelector(formViewSheetClassName);
+    if (chatterElement && formSheetElement && ref.el) {
+      /** @type {CSSStyleDeclaration}*/
+      const elStyle = ref.el.style;
+      const width = `${chatterElement.clientWidth}px`;
+      const height = `${chatterElement.clientHeight}px`;
+      const left = `${formSheetElement.clientWidth}px`;
+      elStyle.setProperty("--o-FileViewerContainer-width", width);
+      elStyle.setProperty("--o-FileViewerContainer-height", height);
+      elStyle.setProperty("--o-FileViewerContainer-left", left);
     }
+  }
 
-    useExternalListener(window, "resize", () => {
-        requestAnimationFrame(updateActualFormChatterSize);
-    });
-    onMounted(() => {
-        requestAnimationFrame(updateActualFormChatterSize);
-    });
+  useExternalListener(window, "resize", () => {
+    requestAnimationFrame(updateActualFormChatterSize);
+  });
+  onMounted(() => {
+    requestAnimationFrame(updateActualFormChatterSize);
+  });
 }
 
 export const unpatchFileViewer = patch(FileViewer.prototype, {
-    setup() {
-        super.setup();
-        this.root = useRef("root");
-        Object.assign(this.state, {
-            allowMinimize: false,
-            maximized: true,
-        });
-        useFileViewerContainerSize(this.root);
-        onWillStart(this.setDefaultMaximizeState);
-    },
+  setup() {
+    super.setup();
+    this.root = useRef("root");
+    Object.assign(this.state, {
+      allowMinimize: false,
+      maximized: true,
+    });
+    useFileViewerContainerSize(this.root);
+    onWillStart(this.setDefaultMaximizeState);
+  },
 
-    get rootClass() {
-        return {
-            modal: this.props.modal,
-            "o-FileViewerContainer__maximized": this.state.maximized,
-            "o-FileViewerContainer__minimized": !this.state.maximized,
-        };
-    },
+  get rootClass() {
+    return {
+      modal: this.props.modal,
+      "o-FileViewerContainer__maximized": this.state.maximized,
+      "o-FileViewerContainer__minimized": !this.state.maximized,
+    };
+  },
 
-    setDefaultMaximizeState() {
-        this.state.allowMinimize = Boolean(
-            document.querySelector(`${formChatterClassName}.o-aside`)
-        );
-        this.state.maximized = !this.state.allowMinimize;
-    },
+  setDefaultMaximizeState() {
+    this.state.allowMinimize = Boolean(
+      document.querySelector(`${formChatterClassName}.o-aside`)
+    );
+    this.state.maximized = !this.state.allowMinimize;
+  },
 
-    /**
-     * @param {Boolean} value
-     */
-    setMaximized(value) {
-        this.state.maximized = value;
-    },
+  /**
+   * @param {Boolean} value
+   */
+  setMaximized(value) {
+    this.state.maximized = value;
+  },
 });
