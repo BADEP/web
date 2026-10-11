@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="web_timeline.TimelineRenderer">
-        <div class="oe_timeline_view" t-custom-ref="root">
+        <div class="oe_timeline_view" t-ref="this.rootRef">
             <div class="oe_timeline_buttons">
                 <button
                     t-att-class="'oe_timeline_button_today btn ' + (this.mode.data == 'today' ? ' btn-primary' : 'btn-default')"
@@ -26,7 +26,7 @@
                     >Year</button>
                 </div>
             </div>
-            <div class="oe_timeline_widget" t-custom-ref="canvas" />
+            <div class="oe_timeline_widget" t-ref="this.canvasRef" />
         </div>
     </t>
     <svg t-name="TimelineView.Canvas" class="oe_timeline_view_canvas">
