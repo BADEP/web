@@ -5,7 +5,7 @@ import {ListRenderer} from "@web/views/list/list_renderer";
 import {patch} from "@web/core/utils/patch";
 import {exprToBoolean} from "@web/core/utils/strings";
 import {browser} from "@web/core/browser/browser";
-import {x2ManyCommands} from "@web/core/orm_service";
+import {x2ManyCommands} from "@web/core/orm_plugin";
 
 const SCALAR_TYPES = [
   "integer",
