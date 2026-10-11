@@ -6,6 +6,8 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestResUsers(BaseCommon):
+    _test_user_groups = None
+
     def test_compute_redirect_home(self):
         record = new_test_user(self.env, login="jeant@mail.com")
         self.assertFalse(record.is_redirect_home)
