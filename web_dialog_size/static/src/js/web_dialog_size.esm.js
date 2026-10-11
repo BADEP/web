@@ -1,5 +1,4 @@
-import {Component} from "@odoo/owl";
-import {onWillRender} from "@web/owl2/utils";
+import {Component, signal, t, useProps} from "@odoo/owl";
 import {ActionDialog} from "@web/webclient/actions/action_dialog";
 import {Dialog} from "@web/core/dialog/dialog";
 import {SelectCreateDialog} from "@web/views/view_dialogs/select_create_dialog";
@@ -14,6 +13,9 @@ function triggerWindowResize() {
 }
 
 export class ExpandButton extends Component {
+  static template = "web_dialog_size.ExpandButton";
+  props = useProps();
+
   setup() {
     this.original_size = this.props.getoriginalsize
       ? this.props.getoriginalsize()
@@ -35,11 +37,12 @@ export class ExpandButton extends Component {
   }
 }
 
-ExpandButton.template = "web_dialog_size.ExpandButton";
-
 patch(Dialog.prototype, {
   setup() {
     this.originalSize = this.props.size;
+    // Props are read-only in Owl 3: keep the size forced by this module in a
+    // signal and give it precedence in the `size` getter.
+    this.webDialogSizeForced = signal(undefined);
     super.setup();
     this.setSize = this.setSize.bind(this);
     this.getSize = this.getSize.bind(this);
@@ -51,8 +54,7 @@ patch(Dialog.prototype, {
     );
 
     if (storedValue === "true") {
-      this._forcedSize = "dialog_full_screen";
-      this.props.size = "dialog_full_screen";
+      this.webDialogSizeForced.set("dialog_full_screen");
     }
 
     const orm = useService("orm");
@@ -68,28 +70,24 @@ patch(Dialog.prototype, {
           browser.localStorage.setItem("odoo.web_dialog_size.value", serverValue);
           if (serverValue === "true") {
             this.setSize("dialog_full_screen");
-          } else if (this._forcedSize === "dialog_full_screen") {
+          } else if (this.webDialogSizeForced() === "dialog_full_screen") {
             this.setSize(this.originalSize || "md");
           }
         }
       }
     });
+  },
 
-    onWillRender(() => {
-      if (this._forcedSize && this.props.size !== this._forcedSize) {
-        this.props.size = this._forcedSize;
-      }
-    });
+  get size() {
+    return this.webDialogSizeForced() || super.size;
   },
 
   setSize(size) {
-    this._forcedSize = size;
-    this.props.size = size;
-    this.render();
+    this.webDialogSizeForced.set(size);
   },
 
   getSize() {
-    return this.props.size;
+    return this.size;
   },
 
   getOriginalSize() {
@@ -99,7 +97,10 @@ patch(Dialog.prototype, {
 
 patch(SelectCreateDialog.prototype, {
   setup() {
-    this.originalSize = this.props.size;
+    // SelectCreateDialog has no size prop in Odoo 20: keep the size of the
+    // inner Dialog in a signal (undefined = Dialog default size).
+    this.originalSize = undefined;
+    this.webDialogSize = signal(undefined);
     super.setup();
     this.setSize = this.setSize.bind(this);
     this.getSize = this.getSize.bind(this);
@@ -111,7 +112,7 @@ patch(SelectCreateDialog.prototype, {
     );
 
     if (storedValue === "true") {
-      this.props.size = "dialog_full_screen";
+      this.webDialogSize.set("dialog_full_screen");
     }
 
     const orm = useService("orm");
@@ -126,7 +127,7 @@ patch(SelectCreateDialog.prototype, {
           browser.localStorage.setItem("odoo.web_dialog_size.value", serverValue);
           if (serverValue === "true") {
             this.setSize("dialog_full_screen");
-          } else if (this.props.size === "dialog_full_screen") {
+          } else if (this.webDialogSize() === "dialog_full_screen") {
             this.setSize(this.originalSize || "md");
           }
         }
@@ -135,12 +136,11 @@ patch(SelectCreateDialog.prototype, {
   },
 
   setSize(size) {
-    this.props.size = size;
-    this.render();
+    this.webDialogSize.set(size);
   },
 
   getSize() {
-    return this.props.size;
+    return this.webDialogSize();
   },
 
   getOriginalSize() {
@@ -154,6 +154,6 @@ SelectCreateDialog.components = Object.assign(SelectCreateDialog.components || {
 });
 Dialog.components = Object.assign(Dialog.components || {}, {ExpandButton});
 // Keep Odoo's standard dialog sizes and add the custom maximized size.
-const coreValidateDialogSize = Dialog.props.size.validate;
-Dialog.props.size.validate = (size) =>
-  coreValidateDialogSize(size) || size === "dialog_full_screen";
+Dialog.propsSchema.size = t
+  .selection(["sm", "md", "lg", "xl", "fs", "fullscreen", "dialog_full_screen"])
+  .optional("lg");
