@@ -3,12 +3,12 @@ of actions to execute:
 
 ``` python
 def foo(self):
-   self.ensure_one()
-   return {
-      'type': 'ir.actions.act_multi',
-      'actions': [
-          {'type': 'ir.actions.act_window_close'},
-          {'type': 'ir.actions.client', 'tag': 'reload'},
-      ]
-   }
+    self.ensure_one()
+    return {
+        "type": "ir.actions.act_multi",
+        "actions": [
+            {"type": "ir.actions.act_window_close"},
+            {"type": "ir.actions.client", "tag": "reload"},
+        ],
+    }
 ```

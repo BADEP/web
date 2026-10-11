@@ -7,15 +7,15 @@ import {registry} from "@web/core/registry";
  */
 
 async function executeMultiAction({env, action}) {
-    return action.actions
-        .map((item) => {
-            return () => {
-                return env.services.action.doAction(item);
-            };
-        })
-        .reduce((prev, cur) => {
-            return prev.then(cur);
-        }, Promise.resolve());
+  return action.actions
+    .map((item) => {
+      return () => {
+        return env.services.action.doAction(item);
+      };
+    })
+    .reduce((prev, cur) => {
+      return prev.then(cur);
+    }, Promise.resolve());
 }
 
 registry.category("action_handlers").add("ir.actions.act_multi", executeMultiAction);
