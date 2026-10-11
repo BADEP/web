@@ -1,4 +1,4 @@
-import {useComponent, useEffect, useExternalListener} from "@odoo/owl";
+import {useComponent, useExternalListener, useLayoutEffect} from "@web/owl2/utils";
 import {ListRenderer} from "@web/views/list/list_renderer";
 import {browser} from "@web/core/browser/browser";
 import {patch} from "@web/core/utils/patch";
@@ -95,7 +95,7 @@ export function useMagicColumnWidths(tableRef, getState, orig) {
    * Call setStoredColumnWidths on init and on window resize.
    */
   if (renderer.constructor.useMagicColumnWidths) {
-    useEffect(setStoredColumnWidths);
+    useLayoutEffect(setStoredColumnWidths);
     const debouncedResizeCallback = useDebounced(() => {
       setStoredColumnWidths();
     }, 300);
