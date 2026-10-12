@@ -1,4 +1,5 @@
-import {markup, onMounted, onPatched, onWillStart, useRef} from "@odoo/owl";
+import { markup, onMounted, onPatched, onWillStart } from "@odoo/owl";
+import { useRef } from "@web/owl2/utils";
 import {CharField, charField} from "@web/views/fields/char/char_field";
 import {loadJS} from "@web/core/assets";
 import {registry} from "@web/core/registry";

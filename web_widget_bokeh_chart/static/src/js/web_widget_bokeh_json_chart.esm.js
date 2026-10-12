@@ -1,6 +1,7 @@
-import {Component, markup, onMounted, onPatched, onWillStart, useRef} from "@odoo/owl";
+import { Component, markup, onMounted, onPatched, onWillStart } from "@odoo/owl";
 import {loadJS} from "@web/core/assets";
 import {registry} from "@web/core/registry";
+import { useRef } from "@web/owl2/utils";
 
 export async function loadBokehLibraries() {
   const scripts = [
