@@ -16,21 +16,32 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/web",
     "license": "AGPL-3",
-    "depends": ["web"],
+    # This dependency should be replaced by "web" if this commit is merged:
+    # https://github.com/odoo/odoo/pull/287582/changes/20771f34cad87b1753a7ab81e5fc172663591c89
+    "depends": ["html_editor"],
     "assets": {
         "web.assets_backend": [
-            (
-                "before",
-                "web/static/src/views/fields/*",
-                "web_m2x_options/static/src/components/form.esm.js",
-            ),
             (
                 "after",
                 "web/static/src/views/fields/standard_field_props.js",
                 "web_m2x_options/static/src/views/fields/standard_field_props.esm.js",
             ),
-            "web_m2x_options/static/src/components/base.xml",
-        ]
+            (
+                "before",
+                "web/static/src/views/fields/*",
+                "web_m2x_options/static/src/utils.esm.js",
+            ),
+            (
+                "before",
+                "web/static/src/views/fields/*",
+                "web_m2x_options/static/src/views/fields/**",
+            ),
+            "web_m2x_options/static/src/views/form/form_controller.esm.js",
+            "web_m2x_options/static/src/core/autocomplete/autocomplete.xml",
+        ],
+        "web.assets_unit_tests": [
+            "web_m2x_options/static/tests/**/*",
+        ],
     },
     "installable": True,
 }
