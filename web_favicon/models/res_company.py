@@ -18,6 +18,7 @@ from odoo.tools.binary import BinaryBytes
 class ResCompany(models.Model):
     _inherit = "res.company"
 
+    @api.model
     def _get_default_favicon(self, original=False):
         img_path = odoo.tools.misc.file_path("web/static/img/favicon.ico")
         with tools.file_open(img_path, "rb") as f:
@@ -53,15 +54,16 @@ class ResCompany(models.Model):
     favicon = fields.Binary(
         string="Company Favicon",
         help="This field holds the image used to display favicon for a given company.",
+        compute="_compute_favicon",
+        store=True,
+        readonly=False,
+        precompute=True,
     )
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        # add default favicon
-        for vals in vals_list:
-            if not vals.get("favicon"):
-                vals["favicon"] = self._get_default_favicon()
-        return super().create(vals_list)
+    def _compute_favicon(self):
+        # add default favicon, only on creation as there is no dependency
+        for company in self:
+            company.favicon = company._get_default_favicon()
 
     # Get favicon from current company
     @api.model
